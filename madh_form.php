@@ -34,10 +34,12 @@
        if(($bengali>=101||$bengali<0)||($english>=101||$english<0)||($math>=101||$math<0)||($history>=101||$history<0)||($geography>=101||$geography<0)||($phy_sc>=101||$phy_sc<0)||($life_sc>=101||$life_sc<0))
        {
           $nine_flag=true;
+          // exit();
        }
        if(($ten_bengali>=11||$ten_bengali<0)||($ten_english>=11||$ten_english<0)||($ten_math>=11||$ten_math<0)||($ten_history>=11||$ten_history<0)||($ten_geo>=11||$ten_geo<0)||($ten_phy_sc>=11||$ten_phy_sc<0)||($ten_life_sc>=11||$ten_life_sc<0))
        {
           $ten_flag=true;
+          // exit();
        }
 
        $res_bengali=ceil($bengali/2)+($ten_bengali*5);
@@ -48,11 +50,15 @@
        $res_phy_sc=ceil($phy_sc/2)+($ten_phy_sc*5);
        $res_life_sc=ceil($life_sc/2)+($ten_life_sc*5);
 
-       $total=$res_bengali+$res_english+$res_math+ $res_history+$res_geo+$res_phy_sc+$res_life_sc;
-       $percent=round((($total*100)/700),2);
-      $res=true;
-      $sql="insert into madhya values (NULL,'$username','$phone','$total','$percent')";
-      $sql_run=mysqli_query($con,$sql);
+       if(!$nine_flag&&!$ten_flag)
+       {
+          $total=$res_bengali+$res_english+$res_math+ $res_history+$res_geo+$res_phy_sc+$res_life_sc;
+         $percent=round((($total*100)/700),2);
+        $res=true;
+        $sql="insert into madhya values (NULL,'$username','$phone','$total','$percent')";
+        $sql_run=mysqli_query($con,$sql);
+       }
+       
     
 
 
@@ -63,6 +69,7 @@
 
    ?>
 <div class="container">
+  <br>
     <h1>Check Your Madhyamik result</h1>
     <hr>
     <?php 
@@ -81,6 +88,31 @@
                     </div>";
         // echo "ji";
       }
+
+     ?>
+     <?php 
+
+    if($res)
+    {
+      // echo "<hr>";
+      echo "<h1>Your result will be </h1>";
+      echo " <ul class='list-group'>
+        <li class='list-group-item'>Bengali:- $res_bengali</li>
+        <li class='list-group-item'>English:-$res_english </li>
+        <li class='list-group-item'>Math:-$res_math</li>
+        <li class='list-group-item'>Life Science:-$res_life_sc</li>
+        <li class='list-group-item'>Physical Science:-$res_phy_sc</li>
+        <li class='list-group-item'>History :-$res_history</li>
+        <li class='list-group-item'>Geography:-$res_geo</li>
+        <li class='list-group-item list-group-item-success'>Total:- $total</li>
+        <li class='list-group-item list-group-item-info'>Percent:- $percent %</li>
+      </ul>
+      <hr>
+      ";
+    }
+         
+
+
 
      ?>
   
@@ -160,29 +192,7 @@
   </form>
 
 
-  <?php 
-
-  if($res)
-  {
-    echo "<hr>";
-    echo "<h1>Your result will be </h1>";
-    echo " <ul class='list-group'>
-      <li class='list-group-item'>Bengali:- $res_bengali</li>
-      <li class='list-group-item'>English:-$res_english </li>
-      <li class='list-group-item'>Math:-$res_math</li>
-      <li class='list-group-item'>Life Science:-$res_life_sc</li>
-      <li class='list-group-item'>Physical Science:-$res_phy_sc</li>
-      <li class='list-group-item'>History :-$res_history</li>
-      <li class='list-group-item'>Geography:-$res_geo</li>
-      <li class='list-group-item list-group-item-success'>Total:- $total</li>
-      <li class='list-group-item list-group-item-info'>Percent:- $percent %</li>
-    </ul>";
-  }
-       
-
-
-
-   ?>
+  
 
 </div>
 <br>
