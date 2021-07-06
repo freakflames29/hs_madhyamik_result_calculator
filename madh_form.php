@@ -187,7 +187,13 @@
       <input type="text" class="form-control" id="ten_lsc" name="ten_lsc" placeholder="Life Science marks" required>
     </div>
 
-
+       <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+      <label class="form-check-label" for="flexCheckDefault">
+        I am agree with the <a href="/result/terms_and_condition.php">Terms and condition</a>
+      </label>
+    </div>
+    <br>
     <button type="submit" name="submit" class="btn btn-primary">Submit</button>
   </form>
 

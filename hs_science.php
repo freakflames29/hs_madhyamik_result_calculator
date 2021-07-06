@@ -207,6 +207,13 @@ include 'header.php';
      	 <label for="twe_prac_twe_eng" class="form-label">English</label>
      	 <input type="text" class="form-control" id="twe_prac_twe_eng" name="twe_prac_twe_eng"placeholder="English Marks" required>
       </div>
+         <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+      <label class="form-check-label" for="flexCheckDefault">
+        I am agree with the <a href="/result/terms_and_condition.php">Terms and condition</a>
+      </label>
+    </div>
+    <br>
       <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
 

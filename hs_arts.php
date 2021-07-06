@@ -9,7 +9,7 @@ include 'header.php';
 
 	if(isset($_POST['submit']))
 	{
-		 $username=mysqli_real_escape_string($con,$_POST['username']);
+		    $username=mysqli_real_escape_string($con,$_POST['username']);
       	 $phone=mysqli_real_escape_string($con,$_POST['phone']);
       	//madhyamik marks
 	    $m1=$_POST['m1'];
@@ -85,7 +85,7 @@ include 'header.php';
 <div class="container">
 	<br>
  
-	<h1>Check Your Science HS result </h1>
+	<h1>Check Your Arts HS result </h1>
    <?php 
 
     if($mad)
@@ -216,7 +216,13 @@ include 'header.php';
      	 <label for="twe_prac_twe_pol_sc" class="form-label">Political Science/Sociology</label>
      	 <input type="text" class="form-control" id="twe_prac_twe_pol_sc" name="twe_prac_twe_pol_sc"placeholder="Political Science/Sociology Marks" required>
       </div>
-      
+      <div class="form-check">
+      <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" required>
+      <label class="form-check-label" for="flexCheckDefault">
+        I am agree with the <a href="/result/terms_and_condition.php">Terms and condition</a>
+      </label>
+    </div>
+    <br>
       <button type="submit" name="submit" class="btn btn-primary">Submit</button>
 
 
